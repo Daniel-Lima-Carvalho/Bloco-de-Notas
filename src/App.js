@@ -1,17 +1,21 @@
 import './App.css';
-import Items from './components/Item';
-import Menu from './components/Menu';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import Button from 'react-bootstrap/Button';
-
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Menu from './components/Menu';
+import Home from './components/Home';
+import AddNotes from './components/AddNotes';
 
 function App() {
   return (
-    <div className="App">
+    <Router>
+      <div className="App">
         <Menu />
-        <Items />
-        <Button className='add-button'>Add</Button>
-    </div>
+        <Routes>
+          <Route exact path='/' element={<Home/>} />
+          <Route path='/add' element={<AddNotes/>} />
+        </Routes>
+      </div>
+    </Router>
   );
 }
 
