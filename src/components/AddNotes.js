@@ -6,26 +6,22 @@ import Button from 'react-bootstrap/Button';
 const AddNotes = () => {
     return (
         <React.Fragment>
-            <Container fluid>
+            <Container className='note-container' fluid>
                 <Form>
-                    <Form.Group className="mb-3" controlId="formBasicEmail">
-                        <Form.Label>Email address</Form.Label>
-                        <Form.Control type="email" placeholder="Enter email" />
-                        <Form.Text className="text-muted">
-                        We'll never share your email with anyone else.
-                        </Form.Text>
+                    <Form.Group className="mb-3" controlId="text">
+                        <Form.Label>Note</Form.Label>
+                        <Form.Control type="text" />
                     </Form.Group>
 
-                    <Form.Group className="mb-3" controlId="formBasicPassword">
-                        <Form.Label>Password</Form.Label>
-                        <Form.Control type="password" placeholder="Password" />
+                    <Form.Group className="mb-3" controlId="date">
+                        <Form.Label>Date</Form.Label>
+                        <Form.Control type="date" />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="formBasicCheckbox">
-                        <Form.Check type="checkbox" label="Check me out" />
-                    </Form.Group>
-                    <Button variant="primary" type="submit">
-                        Submit
-                    </Button>
+                    <div className="d-grid gap-2">
+                        <Button variant="primary" type="submit">
+                            Add Note
+                        </Button>
+                    </div>
                 </Form>
             </Container>
         </React.Fragment>

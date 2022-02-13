@@ -6,6 +6,11 @@ a {
   text-decoration: none !important;
 }
 
+button{
+  background-color: #b68345 !important;
+  border-color: #b68345 !important;
+}
+
 .main{
   width: 100%;
   margin: auto;
@@ -35,4 +40,8 @@ a {
 
 .menu{
   background-color: #b68345 !important;
+}
+
+.note-container{
+ margin-top: 20px; 
 }
