@@ -21,6 +21,7 @@ const AddNotes = () => {
             'name': note,
             'date': new Date().toLocaleString() + ''
         }
+        setNote('');
         setNoteList((oldNoteList) => [...oldNoteList, noteObject]);
     }
 
