@@ -12,7 +12,6 @@ const AddNotes = () => {
     const [noteList, setNoteList] = useState(existingNotes);
 
     useEffect (() => {
-        console.log(noteList);
         saveNotesToLocalStorage(noteList);
     },[noteList]);
 
