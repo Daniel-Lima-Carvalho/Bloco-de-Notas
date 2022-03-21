@@ -5,8 +5,11 @@ import Button from 'react-bootstrap/Button';
 import { useState, useEffect } from 'react';
 
 const AddNotes = () => {
+    let notesJson = localStorage.getItem('notes');
+    let parsedNotes = JSON.parse(notesJson);
+    const existingNotes = parsedNotes ? parsedNotes : [];
     const [note, setNote] = useState('');
-    const [noteList, setNoteList] = useState([]);
+    const [noteList, setNoteList] = useState(existingNotes);
 
     useEffect (() => {
         console.log(noteList);
@@ -47,4 +50,3 @@ const AddNotes = () => {
 }
  
 export default AddNotes;
-

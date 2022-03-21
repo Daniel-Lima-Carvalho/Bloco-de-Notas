@@ -14,7 +14,9 @@ const Items = () => {
     const getNotesFromLocalStorage = () =>{
         let notesJson = localStorage.getItem('notes');
         let notes = JSON.parse(notesJson);
-        notes.forEach(addElements);
+        if(notes){
+            notes.forEach(addElements);
+        }
     }
 
     getNotesFromLocalStorage();
