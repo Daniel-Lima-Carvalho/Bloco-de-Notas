@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import { useState, useEffect } from 'react';
+import { useNavigate } from "react-router-dom";
 
 const AddNotes = () => {
     let notesJson = localStorage.getItem('notes');
@@ -10,17 +11,22 @@ const AddNotes = () => {
     const existingNotes = parsedNotes ? parsedNotes : [];
     const [note, setNote] = useState('');
     const [noteList, setNoteList] = useState(existingNotes);
+    const navigate = useNavigate();
 
     useEffect (() => {
         saveNotesToLocalStorage(noteList);
-    },[noteList]);
+        if(noteList.length !== existingNotes.length){
+            navigate('/');
+        }
+    },[noteList, existingNotes, navigate]);
 
     const saveNote = (e) => {
         e.preventDefault();
         let noteObject = {
             'name': note,
-            'date': new Date().toLocaleString() + ''
-        }
+            'date': new Date().toLocaleString() + '',
+            'id': new Date().getTime()
+        };
         setNote('');
         setNoteList((oldNoteList) => [...oldNoteList, noteObject]);
     }

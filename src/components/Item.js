@@ -5,7 +5,7 @@ const Items = () => {
 
     const addElements = (element, index, array) => {
         elements.push(
-            <div className="item" key={element['date']}>
+            <div className="item" key={element['id']}>
                 {element['name']} - {element['date']}
             </div>
         );
