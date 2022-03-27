@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Menu from './components/Menu';
 import Home from './components/Home';
 import AddNotes from './components/AddNotes';
+import UpdateNotes from './components/UpdateNotes';
 
 function App() {
   return (
@@ -12,7 +13,8 @@ function App() {
         <Menu />
         <Routes>
           <Route exact path='/' element={<Home/>} />
-          <Route path='/add' element={<AddNotes/>} />
+          <Route exact path='/add' element={<AddNotes/>} />
+          <Route exact path='/update/:id' element={<UpdateNotes/>} />
         </Routes>
       </div>
     </Router>

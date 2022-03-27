@@ -1,13 +1,15 @@
-
+import { Link } from 'react-router-dom';
 
 const Items = () => {
     let elements = []
 
     const addElements = (element, index, array) => {
         elements.push(
-            <div className="item" key={element['id']}>
-                {element['name']} - {element['date']}
-            </div>
+            <Link to={"/update/" + element['id']}>
+                <div className="item" key={element['id']}>
+                    {element['name']} - {element['date']}
+                </div>
+            </Link>
         );
     }
 
