@@ -24,7 +24,8 @@ const AddNotes = () => {
         e.preventDefault();
         let noteObject = {
             'name': note,
-            'date': new Date().toLocaleString() + '',
+            'created_at': new Date().toLocaleString() + '',
+            'updated_at': new Date().toLocaleString() + '',
             'id': new Date().getTime()
         };
         setNote('');

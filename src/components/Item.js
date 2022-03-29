@@ -7,7 +7,7 @@ const Items = () => {
         elements.push(
             <Link to={"/update/" + element['id']}>
                 <div className="item" key={element['id']}>
-                    {element['name']} - {element['date']}
+                    {element['name']} - {element['created_at']}
                 </div>
             </Link>
         );

@@ -29,9 +29,13 @@ const UpdateNotes = () => {
     const saveNote = (e) => {
         e.preventDefault();
         let newNoteList = noteList.map(element =>
-            element.id === parseInt(id)
-              ? { ...element, name: note }
-              : element
+            element.id === parseInt(id) ? 
+                { 
+                    ...element, 
+                    name: note, 
+                    updated_at: new Date().toLocaleString() + ''
+                }
+            : element
         );
         setNoteList(newNoteList);
         setNoteChanged(true);
