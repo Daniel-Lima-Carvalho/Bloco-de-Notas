@@ -6,40 +6,40 @@ import { useState, useEffect } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 
 const UpdateNotes = () => {
+    const navigate = useNavigate();
     let { id } = useParams();
+    let [noteChanged, setNoteChanged] = useState(false);
+    
     let notesJson = localStorage.getItem('notes');
     let parsedNotes = JSON.parse(notesJson);
+
     const existingNotes = parsedNotes ? parsedNotes : [];
-    const [noteList, setNoteList] = useState(existingNotes);
+    let [noteList, setNoteList] = useState(existingNotes);
+    
     const [noteObject, setNoteObject] = useState(noteList.find(element => element['id'] === parseInt(id)));
     const [note, setNote] = useState(noteObject['name']);
-    const navigate = useNavigate();
-
-    console.log('ID ' + id);
-    console.log('Note ' + note);
     
     useEffect (() => {
         saveNotesToLocalStorage(noteList);
-        if(noteList.length !== existingNotes.length){
+        if(noteChanged){
             navigate('/');
         }
-    },[noteList, existingNotes, navigate]);
+    },[noteList, navigate, noteChanged]);
 
     const saveNote = (e) => {
         e.preventDefault();
-        let noteObject = {
-            'name': note,
-            'date': new Date().toLocaleString() + '',
-            'id': new Date().getTime()
-        };
-        setNote('');
-        setNoteList((oldNoteList) => [...oldNoteList, noteObject]);
+        let newNoteList = noteList.map(element =>
+            element.id === parseInt(id)
+              ? { ...element, name: note }
+              : element
+        );
+        setNoteList(newNoteList);
+        setNoteChanged(true);
     }
 
     const saveNotesToLocalStorage = (noteList) =>{
         localStorage.setItem('notes',JSON.stringify(noteList))
     }
-
 
     return (
         <React.Fragment>
@@ -52,7 +52,7 @@ const UpdateNotes = () => {
 
                     <div className="d-grid gap-2">
                         <Button variant="primary" type="submit">
-                            Add Note
+                            Update Note
                         </Button>
                     </div>
                 </Form>
